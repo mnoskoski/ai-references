@@ -61,16 +61,14 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 3}) # Retorna os 3 chu
 print("Base de conhecimento pronta.")
 
 
-print("digite 'sair' para sair do assistente de código.")
+# A seção de execução por linha de comando pode permanecer comentada ou ser removida
+# se você preferir usar apenas o modo de conversa.
+# --- 8. Execução via Linha de Comando ---
+# if __name__ == "__main__":
+#     import sys
+#     ...
 
-while True:
-    user_input = input("Você: ")
-    if user_input.lower() == 'sair':
-        print("Saindo do assistente de código. Até logo!")
-        break
 
-    # Chama a função principal com o input do usuário
-    run_code_assistant(user_input)
 # --- 1. Definir as Ferramentas (Tools) ---
 
 # --- NOVO: Ferramenta para consultar a base de conhecimento ---
@@ -393,15 +391,22 @@ def run_code_assistant(prompt: str):
 
     print("-" * 30)
 
-# --- 8. Execução via Linha de Comando ---
+# --- 8. Bloco de Execução Principal ---
 if __name__ == "__main__":
-    import sys
+    # O código aqui dentro só roda quando você executa 'python code_assist.py'
+    # Todas as funções acima já foram definidas neste ponto.
     
-    if len(sys.argv) < 2:
-        print("Uso: python code_assist.py <seu comando para o assistente>")
-        print("Exemplo: python code_assist.py criar uma folder 'my_app' com um Dockerfile de um nginx que sobe a app na porta 8080")
-        sys.exit(1)
-    
-    user_prompt = " ".join(sys.argv[1:])
-    
-    run_code_assistant(user_prompt)
+    print("Assistente de código iniciado. Digite 'sair' para terminar.")
+
+    while True:
+        # 1. Solicita a entrada do usuário
+        user_input = input("Você: ")
+        
+        # 2. Verifica se o usuário quer sair
+        if user_input.lower() == 'sair':
+            print("Saindo do assistente de código. Até logo!")
+            break
+        
+        # 3. Se o input não estiver vazio, chama o assistente
+        if user_input:
+            run_code_assistant(user_input)
