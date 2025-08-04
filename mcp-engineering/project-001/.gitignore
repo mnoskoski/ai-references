@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+.env.*
+.venv/
+venv/
+*.sqlite3
+
+# Logs
+*.log
+*.out
+*.pid
+
+# IDEs e ferramentas
+.vscode/
+.idea/
+*.swp
+
+# Testes
+htmlcov/
+coverage.*
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+pytestdebug.log
+
+# Docker
+*.tar
+*.img
+docker-compose.override.yml
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+.pnpm-debug.log
+
+# Builds do MCP Server
+**/dist/
+**/build/
+**/.turbo/
+**/.next/
+**/.vercel/
+
+# Typescript
+*.tsbuildinfo
+
+# GitHub
+*.token
+.github/workflows/*.secrets.*
+.DS_Store
+
+# Backup files
+*.bak
+*~
+
+# Coverage reports
+coverage/
+coverage-final.json
+lcov.info
+lcov-report/
+
+# Lock files (opcional)
+poetry.lock
+Pipfile.lock
+
+# Output local de scripts
+output/
+logs/
+tmp/
+
+# Ignore ROADMAP backups
+ROADMAP*.bak

@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app-mcp-server:
+    build:
+      context: ./app  # ou ajuste conforme onde está o Dockerfile
+    env_file:
+      - ./.env
+    container_name: app-mcp-server
+    volumes:
+      - ./app:/app  # Código do MCP Client
+    ports:
+      - "8000:8000"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - LOG_LEVEL=info
+      - SERVER_NAME=github-mcp-server
+    working_dir: /app
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    restart: unless-stopped
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    command: http app-mcp-server:8000
+    ports:
+      - "4040:4040" # painel web
